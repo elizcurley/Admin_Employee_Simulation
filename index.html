@@ -61,7 +61,7 @@
 
       const getPrompt = () => {
         if (!selectedScenario) return '';
-        return `Please engage in a meeting simulation. You are the Social Services employee. Your supervisor is the ${selectedScenario.role}. Background: ${selectedScenario.background} You are here to discuss ${selectedScenario.issue} ${selectedScenario.context}. Respond as the employee in first-person, sharing your perspective, motivations, and uncertainties. When you’re ready to commit to a next step, say any sentence beginning with "I will".`;
+        return `Please engage in a meeting simulation. You are the Social Services employee. Your supervisor is the ${selectedScenario.role}. Background: ${selectedScenario.background} You are here to discuss ${selectedScenario.issue} ${selectedScenario.context}. Before we begin, please provide any reasonable documentation that would be available to the supervisor in this situation. Then respond as the employee in first-person, sharing your perspective, motivations, and uncertainties. When you’re ready to commit to a next step, say any sentence beginning with "I will".`;
       };
 
       const copyToClipboard = () => {
@@ -96,7 +96,7 @@
             React.createElement('button', { onClick: spinWheel, disabled: isSpinning, className: 'px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:opacity-50' },
               isSpinning ? 'Spinning...' : 'Spin Wheel'
             ),
-            React.createElement('textarea', { ref: textAreaRef, readOnly: true, value: getPrompt(), className: 'w-full h-48 p-2 text-sm border rounded resize-none', placeholder: 'Your prompt will appear here.' }),
+            React.createElement('textarea', { ref: textAreaRef, readOnly: true, value: getPrompt(), className: 'w-full h-56 p-2 text-sm border rounded resize-none', placeholder: 'Your prompt will appear here.' }),
             React.createElement('button', { onClick: copyToClipboard, disabled: !selectedScenario, className: 'px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 disabled:opacity-50' }, 'Copy Prompt'),
             copied && React.createElement('div', { className: 'mt-2 text-green-700' }, 'Prompt copied to clipboard!')
           )
