@@ -60,9 +60,9 @@
       };
 
       const getPrompt = () => {
-        if (!selectedScenario) return '';
-        return `SYSTEM: You are the employee in this scenario. When you feel the supervisor has adequately addressed your concern and it’s time to close the meeting, respond with any sentence beginning with "I will".\n\nUSER: You’re the supervisor of a ${selectedScenario.role} who has ${selectedScenario.issue} ${selectedScenario.context}.\nYour goal is to work the conversation until the employee says "I will…". Let’s begin.`;
-      };
+    if (!selectedScenario) return '';
+    return `You are a Social Services ${selectedScenario.role}. You are the employee in this scenario, called in by your supervisor to discuss: ${selectedScenario.issue} ${selectedScenario.context}. Respond as the employee in first-person, sharing your perspective, motivations, and uncertainties. When you believe your supervisor has adequately addressed your concern and it’s time to close, respond with any sentence beginning with "I will".`;
+};
 
       const copyToClipboard = () => {
         textAreaRef.current.select();
