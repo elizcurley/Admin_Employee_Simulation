@@ -61,8 +61,20 @@
 
       const getPrompt = () => {
         if (!selectedScenario) return '';
-        return `Please engage in a meeting simulation. You are the Social Services employee. Your supervisor is the ${selectedScenario.role}. Background: ${selectedScenario.background} You are here to discuss ${selectedScenario.issue} ${selectedScenario.context}. Before we begin, please provide any reasonable documentation that would be available to the supervisor in this situation. Then respond as the employee in first-person, sharing your perspective, motivations, and uncertainties. When you’re ready to commit to a next step, say any sentence beginning with "I will".`;
-      };
+        return `Please engage with me in a practice Social Services supervisor–employee meeting. I am the supervisor: ${selectedScenario.role} in ${selectedScenario.context}. You are the employee scheduled to discuss ${selectedScenario.issue}.
+
+Before we begin:
+• Introduce yourself: give me the employee’s name, title, and 2–3 bullet background facts I’d realistically have on file.
+• Keep your responses to 2–3 sentences.
+
+During the meeting:
+• Wait for me to ask the first question; then respond in first-person, sharing your perspective, motivations, and uncertainties.
+
+Ending the meeting:
+• We’ll end when you state an action item beginning with “I will…” and we have both confirmed it.
+
+I want to practice my leadership, active listening, and policy application.`;
+    };
 
       const copyToClipboard = () => {
         textAreaRef.current.select();
