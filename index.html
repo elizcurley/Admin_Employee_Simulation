@@ -9,7 +9,10 @@
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
         .animate-spin { animation: spin 1s linear infinite; }
     </style>
 </head>
@@ -18,31 +21,31 @@
 
     <script type="text/babel" data-presets="react,env">
         const scenarios = [
-          { role: "Program Manager", issue: "failure to meet grant reporting deadlines", context: "in a federally funded homelessness prevention program" },
-          { role: "Department Supervisor", issue: "repeated tardiness", context: "in a high-caseload child-welfare department" },
-          { role: "Intake Supervisor", issue: "unreturned client inquiries", context: "in a high-volume intake unit" },
-          { role: "Field Operations Supervisor", issue: "safety protocol violations during home visits", context: "on a large rural caseload" },
-          { role: "Clinical Director", issue: "refusal to adopt the new EHR system", context: "during a hospital-affiliated community clinic rollout" },
-          { role: "HR Manager", issue: "high turnover rates among support staff", context: "in a remote counseling program" },
-          { role: "Training Supervisor", issue: "low completion of mandatory ethics training", context: "across all new hires this quarter" },
-          { role: "Volunteer Program Supervisor", issue: "decreasing volunteer retention", context: "in an after-school enrichment initiative" },
-          { role: "Community Outreach Manager", issue: "conflict with partner agency leadership", context: "on a cross-sector collaboration project" },
-          { role: "Compliance Officer", issue: "documentation errors uncovered in audit", context: "during a nonprofit management review" },
-          { role: "Quality Improvement Supervisor", issue: "missed accreditation metrics", context: "ahead of an upcoming regulatory site visit" },
-          { role: "Administrative Coordinator", issue: "PTO requests creating scheduling gaps", context: "in a 24/7 crisis-hotline operation" },
-          { role: "Resource Allocation Manager", issue: "budget overrun for program supplies", context: "in a food-security initiative" },
-          { role: "Diversity & Inclusion Manager", issue: "unresolved microaggressions within the team", context: "during rollout of a new diversity training" },
-          { role: "Employee Relations Supervisor", issue: "harassment complaint from a staff member", context: "following a department-wide meeting" },
-          { role: "Performance Improvement Supervisor", issue: "consistently low productivity metrics", context: "among telehealth counseling staff" },
-          { role: "Career Development Coordinator", issue: "promotion request despite insufficient qualifications", context: "during the annual review cycle" },
-          { role: "Remote Work Policy Manager", issue: "employee requesting permanent remote work", context: "under current regional office policy" },
-          { role: "Budget Administrator", issue: "operational cost overspend", context: "in the quarterly financial review" },
-          { role: "Accreditation Coordinator", issue: "failure to submit accreditation documents", context: "before the scheduled site visit" },
-          { role: "EHR Implementation Manager", issue: "staff resistance to new digital workflows", context: "amidst a digital transformation initiative" },
-          { role: "Brand & Communications Supervisor", issue: "unauthorized social-media post by staff", context: "impacting organizational brand identity" },
-          { role: "Data Analytics Supervisor", issue: "significant data inconsistencies in report", context: "ahead of an executive board briefing" },
-          { role: "Interagency Collaboration Supervisor", issue: "partnership friction with a local agency", context: "on a joint service-delivery project" },
-          { role: "Risk Management Supervisor", issue: "potential confidentiality breach in client files", context: "during an internal compliance review" }
+            { role: "Program Manager", issue: "failure to meet grant reporting deadlines", context: "in a federally funded homelessness prevention program" },
+            { role: "Department Supervisor", issue: "repeated tardiness", context: "in a high-caseload child-welfare department" },
+            { role: "Intake Supervisor", issue: "unreturned client inquiries", context: "in a high-volume intake unit" },
+            { role: "Field Operations Supervisor", issue: "safety protocol violations during home visits", context: "on a large rural caseload" },
+            { role: "Clinical Director", issue: "refusal to adopt the new EHR system", context: "during a hospital-affiliated community clinic rollout" },
+            { role: "HR Manager", issue: "high turnover rates among support staff", context: "in a remote counseling program" },
+            { role: "Training Supervisor", issue: "low completion of mandatory ethics training", context: "across all new hires this quarter" },
+            { role: "Volunteer Program Supervisor", issue: "decreasing volunteer retention", context: "in an after-school enrichment initiative" },
+            { role: "Community Outreach Manager", issue: "conflict with partner agency leadership", context: "on a cross-sector collaboration project" },
+            { role: "Compliance Officer", issue: "documentation errors uncovered in audit", context: "during a nonprofit management review" },
+            { role: "Quality Improvement Supervisor", issue: "missed accreditation metrics", context: "ahead of an upcoming regulatory site visit" },
+            { role: "Administrative Coordinator", issue: "PTO requests creating scheduling gaps", context: "in a 24/7 crisis-hotline operation" },
+            { role: "Resource Allocation Manager", issue: "budget overrun for program supplies", context: "in a food-security initiative" },
+            { role: "Diversity & Inclusion Manager", issue: "unresolved microaggressions within the team", context: "during rollout of a new diversity training" },
+            { role: "Employee Relations Supervisor", issue: "harassment complaint from a staff member", context: "following a department-wide meeting" },
+            { role: "Performance Improvement Supervisor", issue: "consistently low productivity metrics", context: "among telehealth counseling staff" },
+            { role: "Career Development Coordinator", issue: "promotion request despite insufficient qualifications", context: "during the annual review cycle" },
+            { role: "Remote Work Policy Manager", issue: "employee requesting permanent remote work", context: "under current regional office policy" },
+            { role: "Budget Administrator", issue: "operational cost overspend", context: "in the quarterly financial review" },
+            { role: "Accreditation Coordinator", issue: "failure to submit accreditation documents", context: "before the scheduled site visit" },
+            { role: "EHR Implementation Manager", issue: "staff resistance to new digital workflows", context: "amidst a digital transformation initiative" },
+            { role: "Brand & Communications Supervisor", issue: "unauthorized social-media post by staff", context: "impacting organizational brand identity" },
+            { role: "Data Analytics Supervisor", issue: "significant data inconsistencies in report", context: "ahead of an executive board briefing" },
+            { role: "Interagency Collaboration Supervisor", issue: "partnership friction with a local agency", context: "on a joint service-delivery project" },
+            { role: "Risk Management Supervisor", issue: "potential confidentiality breach in client files", context: "during an internal compliance review" }
         ];
 
         function Wheel() {
@@ -62,10 +65,10 @@
 
             const getPrompt = () => {
                 if (!selectedScenario) return '';
-                return `SYSTEM: You are the employee in this scenario. When you feel the supervisor has adequately addressed your concern and it’s time to close the meeting, respond with any sentence beginning with "I will".
+                return `SYSTEM: You are the employee in this scenario. When you feel the supervisor has adequately addressed your concern and it’s time to close the meeting, respond with any sentence beginning with \"I will\".
 
 USER: You’re the supervisor of a ${selectedScenario.role} who has ${selectedScenario.issue} ${selectedScenario.context}.
-Your goal is to work the conversation until the employee says "I will…". Let’s begin.`;
+Your goal is to work the conversation until the employee says \"I will…\". Let’s begin.`;
             };
 
             const copyToClipboard = () => {
@@ -89,8 +92,8 @@ Your goal is to work the conversation until the employee says "I will…". Let�
                                     <div className="text-center p-4">
                                         {selectedScenario ? (
                                             <div>
-                                                <strong>Role:</strong> {selectedScenario.role}<br/>
-                                                <strong>Issue:</strong> {selectedScenario.issue}<br/>
+                                                <strong>Role:</strong> {selectedScenario.role}<br />
+                                                <strong>Issue:</strong> {selectedScenario.issue}<br />
                                                 <strong>Context:</strong> {selectedScenario.context}
                                             </div>
                                         ) : (
@@ -100,27 +103,4 @@ Your goal is to work the conversation until the employee says "I will…". Let�
                                 )}
                             </div>
                             <button onClick={spinWheel} disabled={isSpinning} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:opacity-50">
-                                {isSpinning ? "Spinning..." : "Spin Wheel"}
-                            </button>
-                            <textarea
-                                ref={textAreaRef}
-                                readOnly
-                                value={getPrompt()}
-                                className="w-full h-32 p-2 text-sm border rounded resize-none"
-                            />
-                            <button onClick={copyToClipboard} disabled={!selectedScenario} className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 disabled:opacity-50">
-                                Copy Prompt
-                            </button>
-                            {copied && (
-                                <div className="mt-2 text-green-700">Prompt copied to clipboard!</div>
-                            )}
-                        </div>
-                    </div>
-                </div>
-            );
-        }
-
-        ReactDOM.render(<Wheel />, document.getElementById('root'));
-    </script>
-</body>
-</html>
+                                {isSpinning
