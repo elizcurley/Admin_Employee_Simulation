@@ -61,7 +61,7 @@
 
       const getPrompt = () => {
         if (!selectedScenario) return '';
-        return `Please engage in a meeting with me from the perspective of a social services employee in the role of ${selectedScenario.role}, dealing with ${selectedScenario.issue} ${selectedScenario.context}. Respond as the employee, sharing your perspective, motivations, and uncertainties. When you’re ready to commit to a next step, say any sentence beginning with "I will".`;
+        return `Please engage in a meeting simulation where you, as the supervisor, will guide a Social Services employee in the role of ${selectedScenario.role}. Your employee is dealing with ${selectedScenario.issue} ${selectedScenario.context}. Wait for the supervisor to ask the first question. Then respond as the employee in first-person, sharing your perspective, motivations, and uncertainties. When you decide you can commit to a next step, say any sentence beginning with "I will".`;
       };
 
       const copyToClipboard = () => {
@@ -97,7 +97,7 @@
               React.createElement('button', { onClick: spinWheel, disabled: isSpinning, className: 'px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:opacity-50' },
                 isSpinning ? 'Spinning...' : 'Spin Wheel'
               ),
-              React.createElement('textarea', { ref: textAreaRef, readOnly: true, value: getPrompt(), className: 'w-full h-32 p-2 text-sm border rounded resize-none' }),
+              React.createElement('textarea', { ref: textAreaRef, readOnly: true, value: getPrompt(), className: 'w-full h-32 p-2 text-sm border rounded resize-none', placeholder: 'Your prompt will appear here.' }),
               React.createElement('button', { onClick: copyToClipboard, disabled: !selectedScenario, className: 'px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 disabled:opacity-50' }, 'Copy Prompt'),
               copied && React.createElement('div', { className: 'mt-2 text-green-700' }, 'Prompt copied to clipboard!')
             )
