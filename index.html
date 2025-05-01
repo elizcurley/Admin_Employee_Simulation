@@ -6,7 +6,6 @@
   <title>Personnel Case Wheel</title>
   <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
@@ -16,7 +15,7 @@
 <body class="bg-gray-100">
   <div id="root" class="p-6"></div>
 
-  <script type="text/babel" data-presets="es2015,react">
+  <script type="text/javascript">
     const scenarios = [
       { role: "Program Manager", issue: "failure to meet grant reporting deadlines", context: "in a federally funded homelessness prevention program" },
       { role: "Department Supervisor", issue: "repeated tardiness", context: "in a high-caseload child-welfare department" },
@@ -62,7 +61,7 @@
 
       const getPrompt = () => {
         if (!selectedScenario) return '';
-        return `SYSTEM: You are the employee in this scenario. When you feel the supervisor has adequately addressed your concern and it’s time to close the meeting, respond with any sentence beginning with \"I will\".\n\nUSER: You’re the supervisor of a ${selectedScenario.role} who has ${selectedScenario.issue} ${selectedScenario.context}.\nYour goal is to work the conversation until the employee says \"I will…\". Let’s begin.`;
+        return `SYSTEM: You are the employee in this scenario. When you feel the supervisor has adequately addressed your concern and it’s time to close the meeting, respond with any sentence beginning with "I will".\n\nUSER: You’re the supervisor of a ${selectedScenario.role} who has ${selectedScenario.issue} ${selectedScenario.context}.\nYour goal is to work the conversation until the employee says "I will…". Let’s begin.`;
       };
 
       const copyToClipboard = () => {
