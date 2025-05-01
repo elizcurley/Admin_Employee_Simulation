@@ -88,9 +88,11 @@ Your goal is to work the conversation until the employee says "I willâ€¦". Letâ€
                                 ) : (
                                     <div className="text-center p-4">
                                         {selectedScenario ? (
-                                            <><strong>Role:</strong> {selectedScenario.role}<br/>
-                                            <strong>Issue:</strong> {selectedScenario.issue}<br/>
-                                            <strong>Context:</strong> {selectedScenario.context}</>
+                                            <div>
+                                                <strong>Role:</strong> {selectedScenario.role}<br/>
+                                                <strong>Issue:</strong> {selectedScenario.issue}<br/>
+                                                <strong>Context:</strong> {selectedScenario.context}
+                                            </div>
                                         ) : (
                                             "Spin the wheel to get your scenario!"
                                         )}
