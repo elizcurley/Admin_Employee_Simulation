@@ -17,31 +17,31 @@
 
   <script type="text/javascript">
     const scenarios = [
-      { role: "Program Director", issue: "failure to meet grant reporting deadlines", context: "in a federally funded homelessness prevention program" },
-      { role: "Child Welfare Supervisor", issue: "repeated tardiness", context: "in a high-caseload child-welfare department" },
-      { role: "Intake Coordinator", issue: "unreturned client inquiries", context: "in a high-volume intake unit" },
-      { role: "Field Supervisor", issue: "safety protocol violations during home visits", context: "on a large rural caseload" },
-      { role: "Clinical Supervisor", issue: "discomfort implementing new electronic record system", context: "during a system upgrade" },
-      { role: "HR Supervisor", issue: "high turnover rates among support staff", context: "in a remote counseling program" },
-      { role: "Training Coordinator", issue: "low completion of mandatory ethics training", context: "across all new hires this quarter" },
-      { role: "Volunteer Coordinator", issue: "decreasing volunteer retention", context: "in an after-school enrichment initiative" },
-      { role: "Community Program Director", issue: "conflict with partner agency leadership", context: "on a cross-sector collaboration project" },
-      { role: "Compliance Supervisor", issue: "documentation errors in audit", context: "during a nonprofit management review" },
-      { role: "Quality Assurance Supervisor", issue: "missed accreditation metrics", context: "ahead of an upcoming site visit" },
-      { role: "Operations Supervisor", issue: "PTO requests creating scheduling gaps", context: "in a 24/7 crisis-hotline operation" },
-      { role: "Diversity & Inclusion Coordinator", issue: "unresolved microaggressions in the team", context: "during diversity training rollout" },
-      { role: "Employee Relations Manager", issue: "harassment complaint from a staff member", context: "following a department-wide meeting" },
-      { role: "Performance Improvement Manager", issue: "consistently low productivity metrics", context: "among telehealth counseling staff" },
-      { role: "Career Development Manager", issue: "promotion request despite insufficient qualifications", context: "during the annual review cycle" },
-      { role: "Remote Work Coordinator", issue: "employee requesting permanent remote work", context: "under current regional office policy" },
-      { role: "Accreditation Manager", issue: "failure to submit accreditation documents", context: "before the scheduled site visit" },
-      { role: "Communications Supervisor", issue: "unauthorized social-media posts by staff", context: "impacting organizational brand" },
-      { role: "Collaboration Coordinator", issue: "partnership friction with a local agency", context: "on a joint service-delivery project" },
-      { role: "Risk Manager", issue: "potential confidentiality breach in client files", context: "during an internal compliance review" },
-      { role: "Wellness Program Supervisor", issue: "high staff burnout reported", context: "in a residential treatment center" },
-      { role: "Community Engagement Supervisor", issue: "low community turnout", context: "during a new outreach initiative" },
-      { role: "Field Training Supervisor", issue: "lack of mentorship for new hires", context: "in a multi-disciplinary clinic" },
-      { role: "Safety Supervisor", issue: "frequent incident reports", context: "in a group home for adolescents" }
+      { role: "Program Director", issue: "failure to meet grant reporting deadlines", context: "in a federally funded homelessness prevention program", background: "System logs show last quarter's grant report was submitted 10 days late with missing data entries flagged by the reviewer." },
+      { role: "Child Welfare Supervisor", issue: "repeated tardiness", context: "in a high-caseload child-welfare department", background: "Timecard records indicate you arrived over 15 minutes late on 12 days last month without prior notice." },
+      { role: "Intake Coordinator", issue: "unreturned client inquiries", context: "in a high-volume intake unit", background: "Call logs show 20% of intake calls went unanswered for more than 48 hours, and three complaints were filed by clients." },
+      { role: "Field Supervisor", issue: "safety protocol violations during home visits", context: "on a large rural caseload", background: "Audit report recorded two missed safety checklists and a near-miss incident last week." },
+      { role: "Clinical Supervisor", issue: "discomfort implementing new electronic record system", context: "during a system upgrade", background: "Support tickets spiked by 50% in the first two weeks of the new system rollout, with multiple staff reporting confusion." },
+      { role: "HR Supervisor", issue: "high turnover rates among support staff", context: "in a remote counseling program", background: "Exit interviews reveal turnover at 25%, citing lack of support and unclear career paths." },
+      { role: "Training Coordinator", issue: "low completion of mandatory ethics training", context: "across all new hires this quarter", background: "Training reports show only 60% of new hires completed the ethics module within 30 days; average quiz scores were 70%." },
+      { role: "Volunteer Coordinator", issue: "decreasing volunteer retention", context: "in an after-school enrichment initiative", background: "Volunteer hours dropped 30% this quarter; exit feedback notes poor communication and lack of recognition." },
+      { role: "Community Program Director", issue: "conflict with partner agency leadership", context: "on a cross-sector collaboration project", background: "Emails from the partner agency cite misaligned deliverables and missed deadlines over the past month." },
+      { role: "Compliance Supervisor", issue: "documentation errors in audit", context: "during a nonprofit management review", background: "Audit flagged five documentation errors in a random sample of case files last month." },
+      { role: "Quality Assurance Supervisor", issue: "missed accreditation metrics", context: "ahead of an upcoming site visit", background: "Accreditation body sent a warning noting three key metrics were not met in the last submission." },
+      { role: "Operations Supervisor", issue: "PTO requests creating scheduling gaps", context: "in a 24/7 crisis-hotline operation", background: "Scheduling logs show 8-hour gaps in coverage three times last week due to clustered PTO requests." },
+      { role: "Diversity & Inclusion Coordinator", issue: "unresolved microaggressions in the team", context: "during diversity training rollout", background: "Anonymous survey revealed multiple incidents of unaddressed microaggressions reported by team members." },
+      { role: "Employee Relations Manager", issue: "harassment complaint from a staff member", context: "following a department-wide meeting", background: "A formal complaint was filed alleging inappropriate comments made during last week's meeting." },
+      { role: "Performance Improvement Manager", issue: "consistently low productivity metrics", context: "among telehealth counseling staff", background: "Dashboard data shows your team’s productivity is 20% below baseline over the last two quarters." },
+      { role: "Career Development Manager", issue: "promotion request despite insufficient qualifications", context: "during the annual review cycle", background: "Your self-evaluation highlights leadership contributions, but official metrics show three missed performance targets." },
+      { role: "Remote Work Coordinator", issue: "employee requesting permanent remote work", context: "under current regional office policy", background: "Five employees requested remote work last cycle, but only two were approved, per policy guidelines." },
+      { role: "Accreditation Manager", issue: "failure to submit accreditation documents", context: "before the scheduled site visit", background: "Documentation still lacks signatures from two key stakeholders as of today, per your checklist." },
+      { role: "Communications Supervisor", issue: "unauthorized social-media posts by staff", context: "impacting organizational brand", background: "A screenshot was circulated showing confidential program details posted on a public account." },
+      { role: "Collaboration Coordinator", issue: "partnership friction with a local agency", context: "on a joint service-delivery project", background: "Email thread shows delays and unresponsiveness from the agency’s liaison for the past month." },
+      { role: "Risk Manager", issue: "potential confidentiality breach in client files", context: "during an internal compliance review", background: "Logs show four instances of client files accessed by unauthorized staff in the last audit." },
+      { role: "Wellness Program Supervisor", issue: "high staff burnout reported", context: "in a residential treatment center", background: "Staff wellness surveys show 60% reporting burnout symptoms, and turnover increased 15%." },
+      { role: "Community Engagement Supervisor", issue: "low community turnout", context: "during a new outreach initiative", background: "Event attendance dropped 40%; community feedback cites poor awareness campaigns." },
+      { role: "Field Training Supervisor", issue: "lack of mentorship for new hires", context: "in a multi-disciplinary clinic", background: "New hire surveys indicate no assigned mentor and irregular check-ins led to confusion." },
+      { role: "Safety Supervisor", issue: "frequent incident reports", context: "in a group home for adolescents", background: "Three minor injury incident reports filed in the past week, per your safety logs." }
     ];
 
     function Wheel() {
@@ -61,7 +61,7 @@
 
       const getPrompt = () => {
         if (!selectedScenario) return '';
-        return `Please engage in a meeting simulation. I am the Social Services ${selectedScenario.role} (the supervisor). You are the employee dealing with ${selectedScenario.issue} ${selectedScenario.context}. Respond as the employee in first-person, sharing your perspective, motivations, and uncertainties. When you’re ready to commit to a next step, say any sentence beginning with \"I will\".`;
+        return `Please engage in a meeting simulation. You are the Social Services employee. Your supervisor is the ${selectedScenario.role}. Background: ${selectedScenario.background} You are here to discuss ${selectedScenario.issue} ${selectedScenario.context}. Respond as the employee in first-person, sharing your perspective, motivations, and uncertainties. When you’re ready to commit to a next step, say any sentence beginning with "I will".`;
       };
 
       const copyToClipboard = () => {
@@ -71,36 +71,34 @@
         setTimeout(() => setCopied(false), 2000);
       };
 
-      return (
-        React.createElement('div', { className: 'max-w-lg mx-auto bg-white shadow-md rounded-lg overflow-hidden' },
-          React.createElement('div', { className: 'p-6' },
-            React.createElement('h2', { className: 'text-2xl font-bold text-center mb-4' }, 'Personnel Case Wheel'),
-            React.createElement('div', { className: 'flex flex-col items-center space-y-4' },
-              React.createElement('div', { className: 'w-64 h-64 rounded-full border-8 border-gray-300 flex items-center justify-center relative overflow-hidden' },
-                isSpinning
-                  ? React.createElement('div', { className: 'animate-spin' },
-                      React.createElement('svg', { xmlns: 'http://www.w3.org/2000/svg', width: '48', height: '48', viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: '2', strokeLinecap: 'round', strokeLinejoin: 'round' },
-                        React.createElement('path', { d: 'M5 12h14' }),
-                        React.createElement('path', { d: 'm12 5 7 7-7 7' })
-                      )
+      return React.createElement('div', { className: 'max-w-lg mx-auto bg-white shadow-md rounded-lg overflow-hidden' },
+        React.createElement('div', { className: 'p-6' },
+          React.createElement('h2', { className: 'text-2xl font-bold text-center mb-4' }, 'Personnel Case Wheel'),
+          React.createElement('div', { className: 'flex flex-col items-center space-y-4' },
+            React.createElement('div', { className: 'w-64 h-64 rounded-full border-8 border-gray-300 flex items-center justify-center relative overflow-hidden' },
+              isSpinning
+                ? React.createElement('div', { className: 'animate-spin' },
+                    React.createElement('svg', { xmlns: 'http://www.w3.org/2000/svg', width: '48', height: '48', viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: '2', strokeLinecap: 'round', strokeLinejoin: 'round' },
+                      React.createElement('path', { d: 'M5 12h14' }),
+                      React.createElement('path', { d: 'm12 5 7 7-7 7' })
                     )
-                  : React.createElement('div', { className: 'text-center p-4' },
-                      selectedScenario
-                        ? React.createElement('div', null,
-                            React.createElement('strong', null, 'Role:'), ' ', selectedScenario.role, React.createElement('br'),
-                            React.createElement('strong', null, 'Issue:'), ' ', selectedScenario.issue, React.createElement('br'),
-                            React.createElement('strong', null, 'Context:'), ' ', selectedScenario.context
-                          )
-                        : 'Spin the wheel to get your scenario!'
-                    )
-              ),
-              React.createElement('button', { onClick: spinWheel, disabled: isSpinning, className: 'px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:opacity-50' },
-                isSpinning ? 'Spinning...' : 'Spin Wheel'
-              ),
-              React.createElement('textarea', { ref: textAreaRef, readOnly: true, value: getPrompt(), className: 'w-full h-32 p-2 text-sm border rounded resize-none', placeholder: 'Your prompt will appear here.' }),
-              React.createElement('button', { onClick: copyToClipboard, disabled: !selectedScenario, className: 'px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 disabled:opacity-50' }, 'Copy Prompt'),
-              copied && React.createElement('div', { className: 'mt-2 text-green-700' }, 'Prompt copied to clipboard!')
-            )
+                  )
+                : React.createElement('div', { className: 'text-center p-4' },
+                    selectedScenario
+                      ? React.createElement('div', null,
+                          React.createElement('strong', null, 'Role:'), ' ', selectedScenario.role, React.createElement('br'),
+                          React.createElement('strong', null, 'Issue:'), ' ', selectedScenario.issue, React.createElement('br'),
+                          React.createElement('strong', null, 'Context:'), ' ', selectedScenario.context
+                        )
+                      : 'Spin the wheel to get your scenario!'
+                  )
+            ),
+            React.createElement('button', { onClick: spinWheel, disabled: isSpinning, className: 'px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:opacity-50' },
+              isSpinning ? 'Spinning...' : 'Spin Wheel'
+            ),
+            React.createElement('textarea', { ref: textAreaRef, readOnly: true, value: getPrompt(), className: 'w-full h-48 p-2 text-sm border rounded resize-none', placeholder: 'Your prompt will appear here.' }),
+            React.createElement('button', { onClick: copyToClipboard, disabled: !selectedScenario, className: 'px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 disabled:opacity-50' }, 'Copy Prompt'),
+            copied && React.createElement('div', { className: 'mt-2 text-green-700' }, 'Prompt copied to clipboard!')
           )
         )
       );
@@ -110,5 +108,3 @@
   </script>
 </body>
 </html>
-
-
