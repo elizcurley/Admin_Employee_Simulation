@@ -61,7 +61,7 @@
 
       const getPrompt = () => {
         if (!selectedScenario) return '';
-        return `Please engage in a meeting simulation where you, as the supervisor, will guide a Social Services employee in the role of ${selectedScenario.role}. Your employee is dealing with ${selectedScenario.issue} ${selectedScenario.context}. Wait for the supervisor to ask the first question. Then respond as the employee in first-person, sharing your perspective, motivations, and uncertainties. When you decide you can commit to a next step, say any sentence beginning with "I will".`;
+        return `Please engage in a meeting simulation. I am the Social Services ${selectedScenario.role} (the supervisor). You are the employee dealing with ${selectedScenario.issue} ${selectedScenario.context}. Respond as the employee in first-person, sharing your perspective, motivations, and uncertainties. When you’re ready to commit to a next step, say any sentence beginning with \"I will\".`;
       };
 
       const copyToClipboard = () => {
