@@ -17,32 +17,32 @@
 
   <script type="text/javascript">
     const scenarios = [
-  { role: "Program Director", issue: "failure to meet grant reporting deadlines", context: "in a federally funded homelessness prevention program" },
-  { role: "Child Welfare Supervisor", issue: "repeated tardiness", context: "in a high-caseload child-welfare department" },
-  { role: "Intake Coordinator", issue: "unreturned client inquiries", context: "in a high-volume intake unit" },
-  { role: "Field Supervisor", issue: "safety protocol violations during home visits", context: "on a large rural caseload" },
-  { role: "Clinical Supervisor", issue: "discomfort implementing new electronic record system", context: "during a system upgrade" },
-  { role: "HR Supervisor", issue: "high turnover rates among support staff", context: "in a remote counseling program" },
-  { role: "Training Coordinator", issue: "low completion of mandatory ethics training", context: "across all new hires this quarter" },
-  { role: "Volunteer Coordinator", issue: "decreasing volunteer retention", context: "in an after-school enrichment initiative" },
-  { role: "Community Program Director", issue: "conflict with partner agency leadership", context: "on a cross-sector collaboration project" },
-  { role: "Compliance Supervisor", issue: "documentation errors in audit", context: "during a nonprofit management review" },
-  { role: "Quality Assurance Supervisor", issue: "missed accreditation metrics", context: "ahead of an upcoming site visit" },
-  { role: "Operations Supervisor", issue: "PTO requests creating scheduling gaps", context: "in a 24/7 crisis-hotline operation" },
-  { role: "Diversity & Inclusion Coordinator", issue: "unresolved microaggressions in the team", context: "during diversity training rollout" },
-  { role: "Employee Relations Manager", issue: "harassment complaint from a staff member", context: "following a department-wide meeting" },
-  { role: "Performance Improvement Manager", issue: "consistently low productivity metrics", context: "among telehealth counseling staff" },
-  { role: "Career Development Manager", issue: "promotion request despite insufficient qualifications", context: "during the annual review cycle" },
-  { role: "Remote Work Coordinator", issue: "employee requesting permanent remote work", context: "under current regional office policy" },
-  { role: "Accreditation Manager", issue: "failure to submit accreditation documents", context: "before the scheduled site visit" },
-  { role: "Communications Supervisor", issue: "unauthorized social-media posts by staff", context: "impacting organizational brand" },
-  { role: "Collaboration Coordinator", issue: "partnership friction with a local agency", context: "on a joint service-delivery project" },
-  { role: "Risk Manager", issue: "potential confidentiality breach in client files", context: "during an internal compliance review" },
-  { role: "Wellness Program Supervisor", issue: "high staff burnout reported", context: "in a residential treatment center" },
-  { role: "Community Engagement Supervisor", issue: "low community turnout", context: "during a new outreach initiative" },
-  { role: "Field Training Supervisor", issue: "lack of mentorship for new hires", context: "in a multi-disciplinary clinic" },
-  { role: "Safety Supervisor", issue: "frequent incident reports", context: "in a group home for adolescents" }
-];
+      { role: "Program Director", issue: "failure to meet grant reporting deadlines", context: "in a federally funded homelessness prevention program" },
+      { role: "Child Welfare Supervisor", issue: "repeated tardiness", context: "in a high-caseload child-welfare department" },
+      { role: "Intake Coordinator", issue: "unreturned client inquiries", context: "in a high-volume intake unit" },
+      { role: "Field Supervisor", issue: "safety protocol violations during home visits", context: "on a large rural caseload" },
+      { role: "Clinical Supervisor", issue: "discomfort implementing new electronic record system", context: "during a system upgrade" },
+      { role: "HR Supervisor", issue: "high turnover rates among support staff", context: "in a remote counseling program" },
+      { role: "Training Coordinator", issue: "low completion of mandatory ethics training", context: "across all new hires this quarter" },
+      { role: "Volunteer Coordinator", issue: "decreasing volunteer retention", context: "in an after-school enrichment initiative" },
+      { role: "Community Program Director", issue: "conflict with partner agency leadership", context: "on a cross-sector collaboration project" },
+      { role: "Compliance Supervisor", issue: "documentation errors in audit", context: "during a nonprofit management review" },
+      { role: "Quality Assurance Supervisor", issue: "missed accreditation metrics", context: "ahead of an upcoming site visit" },
+      { role: "Operations Supervisor", issue: "PTO requests creating scheduling gaps", context: "in a 24/7 crisis-hotline operation" },
+      { role: "Diversity & Inclusion Coordinator", issue: "unresolved microaggressions in the team", context: "during diversity training rollout" },
+      { role: "Employee Relations Manager", issue: "harassment complaint from a staff member", context: "following a department-wide meeting" },
+      { role: "Performance Improvement Manager", issue: "consistently low productivity metrics", context: "among telehealth counseling staff" },
+      { role: "Career Development Manager", issue: "promotion request despite insufficient qualifications", context: "during the annual review cycle" },
+      { role: "Remote Work Coordinator", issue: "employee requesting permanent remote work", context: "under current regional office policy" },
+      { role: "Accreditation Manager", issue: "failure to submit accreditation documents", context: "before the scheduled site visit" },
+      { role: "Communications Supervisor", issue: "unauthorized social-media posts by staff", context: "impacting organizational brand" },
+      { role: "Collaboration Coordinator", issue: "partnership friction with a local agency", context: "on a joint service-delivery project" },
+      { role: "Risk Manager", issue: "potential confidentiality breach in client files", context: "during an internal compliance review" },
+      { role: "Wellness Program Supervisor", issue: "high staff burnout reported", context: "in a residential treatment center" },
+      { role: "Community Engagement Supervisor", issue: "low community turnout", context: "during a new outreach initiative" },
+      { role: "Field Training Supervisor", issue: "lack of mentorship for new hires", context: "in a multi-disciplinary clinic" },
+      { role: "Safety Supervisor", issue: "frequent incident reports", context: "in a group home for adolescents" }
+    ];
 
     function Wheel() {
       const [selectedScenario, setSelectedScenario] = React.useState(null);
@@ -60,9 +60,9 @@
       };
 
       const getPrompt = () => {
-    if (!selectedScenario) return '';
-    return `You are a Social Services ${selectedScenario.role}. You are the employee in this scenario, called in by your supervisor to discuss: ${selectedScenario.issue} ${selectedScenario.context}. Respond as the employee in first-person, sharing your perspective, motivations, and uncertainties. When you believe your supervisor has adequately addressed your concern and it’s time to close, respond with any sentence beginning with "I will".`;
-};
+        if (!selectedScenario) return '';
+        return `Please engage in a meeting with me from the perspective of a social services employee in the role of ${selectedScenario.role}, dealing with ${selectedScenario.issue} ${selectedScenario.context}. Respond as the employee, sharing your perspective, motivations, and uncertainties. When you’re ready to commit to a next step, say any sentence beginning with "I will".`;
+      };
 
       const copyToClipboard = () => {
         textAreaRef.current.select();
