@@ -17,31 +17,36 @@
 
   <script type="text/javascript">
     const scenarios = [
-      { role: "Program Director", issue: "failure to meet grant reporting deadlines", context: "in a federally funded homelessness prevention program", background: "System logs show last quarter's grant report was submitted 10 days late with missing data entries flagged by the reviewer." },
-      { role: "Child Welfare Supervisor", issue: "repeated tardiness", context: "in a high-caseload child-welfare department", background: "Timecard records indicate you arrived over 15 minutes late on 12 days last month without prior notice." },
-      { role: "Intake Coordinator", issue: "unreturned client inquiries", context: "in a high-volume intake unit", background: "Call logs show 20% of intake calls went unanswered for more than 48 hours, and three complaints were filed by clients." },
-      { role: "Field Supervisor", issue: "safety protocol violations during home visits", context: "on a large rural caseload", background: "Audit report recorded two missed safety checklists and a near-miss incident last week." },
-      { role: "Clinical Supervisor", issue: "discomfort implementing new electronic record system", context: "during a system upgrade", background: "Support tickets spiked by 50% in the first two weeks of the new system rollout, with multiple staff reporting confusion." },
-      { role: "HR Supervisor", issue: "high turnover rates among support staff", context: "in a remote counseling program", background: "Exit interviews reveal turnover at 25%, citing lack of support and unclear career paths." },
-      { role: "Training Coordinator", issue: "low completion of mandatory ethics training", context: "across all new hires this quarter", background: "Training reports show only 60% of new hires completed the ethics module within 30 days; average quiz scores were 70%." },
-      { role: "Volunteer Coordinator", issue: "decreasing volunteer retention", context: "in an after-school enrichment initiative", background: "Volunteer hours dropped 30% this quarter; exit feedback notes poor communication and lack of recognition." },
-      { role: "Community Program Director", issue: "conflict with partner agency leadership", context: "on a cross-sector collaboration project", background: "Emails from the partner agency cite misaligned deliverables and missed deadlines over the past month." },
-      { role: "Compliance Supervisor", issue: "documentation errors in audit", context: "during a nonprofit management review", background: "Audit flagged five documentation errors in a random sample of case files last month." },
-      { role: "Quality Assurance Supervisor", issue: "missed accreditation metrics", context: "ahead of an upcoming site visit", background: "Accreditation body sent a warning noting three key metrics were not met in the last submission." },
-      { role: "Operations Supervisor", issue: "PTO requests creating scheduling gaps", context: "in a 24/7 crisis-hotline operation", background: "Scheduling logs show 8-hour gaps in coverage three times last week due to clustered PTO requests." },
-      { role: "Diversity & Inclusion Coordinator", issue: "unresolved microaggressions in the team", context: "during diversity training rollout", background: "Anonymous survey revealed multiple incidents of unaddressed microaggressions reported by team members." },
-      { role: "Employee Relations Manager", issue: "harassment complaint from a staff member", context: "following a department-wide meeting", background: "A formal complaint was filed alleging inappropriate comments made during last week's meeting." },
-      { role: "Performance Improvement Manager", issue: "consistently low productivity metrics", context: "among telehealth counseling staff", background: "Dashboard data shows your team’s productivity is 20% below baseline over the last two quarters." },
-      { role: "Career Development Manager", issue: "promotion request despite insufficient qualifications", context: "during the annual review cycle", background: "Your self-evaluation highlights leadership contributions, but official metrics show three missed performance targets." },
-      { role: "Remote Work Coordinator", issue: "employee requesting permanent remote work", context: "under current regional office policy", background: "Five employees requested remote work last cycle, but only two were approved, per policy guidelines." },
-      { role: "Accreditation Manager", issue: "failure to submit accreditation documents", context: "before the scheduled site visit", background: "Documentation still lacks signatures from two key stakeholders as of today, per your checklist." },
-      { role: "Communications Supervisor", issue: "unauthorized social-media posts by staff", context: "impacting organizational brand", background: "A screenshot was circulated showing confidential program details posted on a public account." },
-      { role: "Collaboration Coordinator", issue: "partnership friction with a local agency", context: "on a joint service-delivery project", background: "Email thread shows delays and unresponsiveness from the agency’s liaison for the past month." },
-      { role: "Risk Manager", issue: "potential confidentiality breach in client files", context: "during an internal compliance review", background: "Logs show four instances of client files accessed by unauthorized staff in the last audit." },
-      { role: "Wellness Program Supervisor", issue: "high staff burnout reported", context: "in a residential treatment center", background: "Staff wellness surveys show 60% reporting burnout symptoms, and turnover increased 15%." },
-      { role: "Community Engagement Supervisor", issue: "low community turnout", context: "during a new outreach initiative", background: "Event attendance dropped 40%; community feedback cites poor awareness campaigns." },
-      { role: "Field Training Supervisor", issue: "lack of mentorship for new hires", context: "in a multi-disciplinary clinic", background: "New hire surveys indicate no assigned mentor and irregular check-ins led to confusion." },
-      { role: "Safety Supervisor", issue: "frequent incident reports", context: "in a group home for adolescents", background: "Three minor injury incident reports filed in the past week, per your safety logs." }
+      {
+        role: "Child Welfare Supervisor",
+        issue: "repeated tardiness and absences",
+        context: "in a high-caseload child-welfare department",
+        background: "Timecard records indicate 12 days of arriving 15+ minutes late and 3 unexcused absences last month without prior notice."
+      },
+      {
+        role: "Intake Coordinator",
+        issue: "unreturned client inquiries",
+        context: "in a high-volume intake unit",
+        background: "Call logs show 20% of intake calls went unanswered for more than 48 hours, and three complaints were filed by clients."
+      },
+      {
+        role: "Compliance Supervisor",
+        issue: "documentation errors in audit",
+        context: "during a nonprofit management review",
+        background: "Audit flagged five documentation errors in a random sample of case files last month."
+      },
+      {
+        role: "School Social Worker",
+        issue: "complaining about clients and venting online on personal social media",
+        context: "in an urban school district",
+        background: "Over the past month, the employee posted several tweets and Facebook updates complaining about students and their families, prompting concern from administration about professionalism and confidentiality."
+      },
+      {
+        role: "Field Training Supervisor",
+        issue: "lack of mentorship for new hires",
+        context: "in a multi-disciplinary clinic",
+        background: "New-hire surveys indicate no assigned mentor and irregular check-ins led to confusion and lower confidence among staff."
+      }
     ];
 
     function Wheel() {
@@ -61,7 +66,12 @@
 
       const getPrompt = () => {
         if (!selectedScenario) return '';
-        return `Please role play with me to simulate a realistic employee–supervisor meeting.\n\nI will be the supervisor in **${selectedScenario.role}** at **${selectedScenario.context}**.\nYou will be the employee, and we will be discussing **${selectedScenario.issue}**.\n\nI will lead the conversation, but please first provide background information on the issue that would be relevant to supervisor–employee discussions (for example: “${selectedScenario.background}”).\n\nMake it as realistically conversational as possible, and note the completion of the interview at the point that the employee agrees to an action plan or signs a document.\n\nThe goals are for me, as the supervisor, to problem‑solve and lead the conversation using my current understanding of leadership in a social services context.`;
+        return `Please role play with me to simulate a realistic employee–supervisor meeting.\n\n` +
+               `I will be the supervisor in **${selectedScenario.role}** at **${selectedScenario.context}**.\n` +
+               `You will be the employee, and we will be discussing **${selectedScenario.issue}**.\n\n` +
+               `I will lead the conversation, but please first provide background information on the issue that would be relevant to supervisor–employee discussions (for example: “${selectedScenario.background}”).\n\n` +
+               `Make it as realistically conversational as possible, and note the completion of the interview at the point that the employee agrees to an action plan or signs a document.\n\n` +
+               `The goals are for me, as the supervisor, to problem-solve and lead the conversation using my current understanding of leadership in a social services context.`;
       };
 
       const copyToClipboard = () => {
