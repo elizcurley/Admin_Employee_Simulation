@@ -95,68 +95,10 @@
 
 We are simulating a realistic employee-supervisor meeting. The user is the supervisor (${selectedScenario.role}) in (${selectedScenario.context}). You are the employee, discussing (${selectedScenario.issue}).
 
-Start by providing concise background data relevant to the discussion, such as: "${selectedScenario.background}". Present it neutrally, like sharing logs or records.
+**FIRST, BEFORE ANY CONVERSATION STARTS:** Provide concise background data relevant to the discussion, such as: "${selectedScenario.background}". Present it neutrally as a list or summary of logs/records (e.g., "Here’s the relevant data from timecard records: ..."). Do NOT incorporate this into dialogue or assume the supervisor's lines—output it standalone.
 
-Keep responses short (2-4 sentences max per turn) and conversational—ask clarifying questions, share perspectives, and build toward understanding. Allow the supervisor to lead, but introduce realistic challenges like defensiveness or external factors (e.g., staffing shortages).
+**THEN, WAIT FOR THE SUPERVISOR TO LEAD THE CONVERSATION.** Once the user (supervisor) responds, begin the role-play as the employee. Keep your responses short (2-4 sentences max per turn) and conversational—ask clarifying questions, share perspectives, and build toward understanding. Allow the supervisor to lead, but introduce realistic challenges like defensiveness or external factors (e.g., staffing shortages).
 
 The simulation ends when you (the employee) agree to a specific action plan (including follow-up steps) or sign a document. Note the completion clearly, e.g., "I agree to this plan. Employee Signature: [Name], Date: [Current Date]."
 
-Goals: Help the supervisor practice problem-solving, active listening, evidence analysis, ethical discussions, and collaborative decision-making in a social services context. Ensure the conversation covers: purpose/evidence, perspectives, impacts (on growth/team/clients), overcoming defensiveness, values/ethics, and an agreed action plan.`;
-      };
-
-      const copyToClipboard = () => {
-        textAreaRef.current.select();
-        document.execCommand('copy');
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
-      };
-
-      return React.createElement('div', { className: 'max-w-lg mx-auto bg-white shadow-md rounded-lg overflow-hidden' },
-        React.createElement('div', { className: 'p-6' },
-          React.createElement('h2', { className: 'text-2xl font-bold text-center mb-4' }, 'Personnel Case Wheel'),
-          React.createElement('div', { className: 'flex flex-col items-center space-y-4' },
-            React.createElement('label', { className: 'flex items-center' },
-              React.createElement('input', { type: 'checkbox', checked: useDropdown, onChange: () => setUseDropdown(!useDropdown), className: 'mr-2' }),
-              'Use Dropdown Instead of Spin'
-            ),
-            useDropdown ? 
-              React.createElement('select', { value: selectedIndex, onChange: handleDropdownChange, className: 'w-full p-2 border rounded' },
-                React.createElement('option', { value: -1 }, 'Select a Scenario'),
-                scenarios.map((scenario, index) => 
-                  React.createElement('option', { key: index, value: index }, `${scenario.role} - ${scenario.issue}`)
-                )
-              ) :
-              React.createElement('div', null,
-                React.createElement('div', { className: 'w-64 h-64 rounded-full border-8 border-gray-300 flex items-center justify-center relative overflow-hidden', 'aria-label': 'Scenario Wheel' },
-                  isSpinning
-                    ? React.createElement('div', { className: 'animate-spin' },
-                        React.createElement('svg', { xmlns: 'http://www.w3.org/2000/svg', width: '48', height: '48', viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: '2', strokeLinecap: 'round', strokeLinejoin: 'round' },
-                          React.createElement('path', { d: 'M5 12h14' }),
-                          React.createElement('path', { d: 'm12 5 7 7-7 7' })
-                        )
-                      )
-                    : React.createElement('div', { className: 'text-center p-4' },
-                        selectedScenario
-                          ? React.createElement('div', null,
-                              React.createElement('strong', null, 'Role:'), ' ', selectedScenario.role, React.createElement('br'),
-                              React.createElement('strong', null, 'Issue:'), ' ', selectedScenario.issue, React.createElement('br'),
-                              React.createElement('strong', null, 'Context:'), ' ', selectedScenario.context
-                            )
-                          : 'Spin the wheel to get your scenario!'
-                      )
-                ),
-                React.createElement('button', { onClick: spinWheel, disabled: isSpinning, className: 'px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:opacity-50' },
-                  isSpinning ? 'Spinning...' : 'Spin Wheel'
-                )
-              ),
-            React.createElement('textarea', { ref: textAreaRef, readOnly: true, value: getPrompt(), className: 'w-full h-48 p-2 text-sm border rounded resize-none', placeholder: 'Your prompt will appear here.', 'aria-label': 'Generated Prompt' }),
-            React.createElement('button', { onClick: copyToClipboard, disabled: !selectedScenario, className: 'px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 disabled:opacity-50' }, 'Copy Prompt'),
-            copied && React.createElement('div', { className: 'mt-2 text-green-700' }, 'Prompt copied to clipboard!')
-          )
-        )
-      );
-    }
-    ReactDOM.render(React.createElement(Wheel), document.getElementById('root'));
-  </script>
-</body>
-</html>
+Goals: Help the supervisor practice problem-solving, active listening, evidence analysis, ethical discussions, and collaborative decision-making in a social services context. Ensure the conversation covers: purpose/evidence, perspectives, impacts (on growth/team/clients), overcoming
