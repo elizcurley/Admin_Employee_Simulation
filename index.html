@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Personnel Case Wheel</title>
-  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
@@ -26,7 +26,7 @@
         role: "Intake Coordinator",
         issue: "unreturned client inquiries",
         context: "in a high-volume intake unit",
-        background: "Call logs show 20% of intake calls went unanswered for more than 48 hours, and three complaints were filed by clients."
+        background: "Call logs show 20 % of intake calls went unanswered for more than 48 hours, and three complaints were filed by clients."
       },
       {
         role: "Compliance Supervisor",
@@ -38,7 +38,7 @@
         role: "School Social Worker",
         issue: "complaining about clients and venting online on personal social media",
         context: "in an urban school district",
-        background: "Over the past month, the employee posted several tweets and Facebook updates complaining about students and their families, prompting concern from administration about professionalism and confidentiality."
+        background: "Over the past month, the employee posted several tweets and Facebook updates complaining about students and their families, raising concerns about professionalism and confidentiality."
       },
       {
         role: "Field Training Supervisor",
@@ -47,58 +47,67 @@
         background: "New-hire surveys indicate no assigned mentor and irregular check-ins led to confusion and lower confidence among staff."
       }
     ];
-
-    const personas = [
-      { experience: "mid-career", attitude: "dedicated but overwhelmed", name: "Alex Rivera", backstory: "juggling a high caseload while dealing with personal burnout" },
-      { experience: "experienced", attitude: "defensive and frustrated", name: "Jordan Kim", backstory: "feeling undervalued after years of service" },
-      { experience: "newer", attitude: "proactive but inconsistent", name: "Taylor Nguyen", backstory: "eager to learn but struggling with time management" },
-      { experience: "mid-career", attitude: "dedicated but overwhelmed", name: "Priya Shah", backstory: "balancing work with family responsibilities leading to occasional lapses" },
-      { experience: "experienced", attitude: "defensive and frustrated", name: "Marcus Lee", backstory: "frustrated with recent policy changes affecting workflow" }
-    ];
-
     function Wheel() {
       const [selectedScenario, setSelectedScenario] = React.useState(null);
-      const [selectedPersona, setSelectedPersona] = React.useState(null);
       const [isSpinning, setIsSpinning] = React.useState(false);
       const [copied, setCopied] = React.useState(false);
-      const [useDropdown, setUseDropdown] = React.useState(false);
-      const [selectedIndex, setSelectedIndex] = React.useState(-1);
       const textAreaRef = React.useRef(null);
-
       const spinWheel = () => {
         setIsSpinning(true);
         setTimeout(() => {
           const randomIndex = Math.floor(Math.random() * scenarios.length);
-          const randomPersonaIndex = Math.floor(Math.random() * personas.length);
           setSelectedScenario(scenarios[randomIndex]);
-          setSelectedPersona(personas[randomPersonaIndex]);
           setIsSpinning(false);
         }, 2000);
       };
-
-      const handleDropdownChange = (event) => {
-        const index = parseInt(event.target.value);
-        setSelectedIndex(index);
-        if (index >= 0) {
-          const randomPersonaIndex = Math.floor(Math.random() * personas.length);
-          setSelectedScenario(scenarios[index]);
-          setSelectedPersona(personas[randomPersonaIndex]);
-        } else {
-          setSelectedScenario(null);
-          setSelectedPersona(null);
-        }
-      };
-
       const getPrompt = () => {
-        if (!selectedScenario || !selectedPersona) return '';
-        return `You are role-playing as an employee in a social services organization. Your persona: You are a ${selectedPersona.experience} ${selectedPersona.attitude} social worker named ${selectedPersona.name}. You have ${selectedPersona.backstory}. Respond in a realistic, conversational tone—use natural language, express emotions appropriately (e.g., initial defensiveness, then openness with good listening), and avoid being overly agreeable right away. Before each response, think step-by-step internally (but don't show it): 1) Consider the root cause of the issue. 2) Reflect on how it impacts professional growth, team/agency, and clients. 3) Tie in relevant NASW Code of Ethics standards (e.g., confidentiality, competence). 4) Adapt based on the supervisor's active listening and problem-solving.
-
-We are simulating a realistic employee-supervisor meeting. The user is the supervisor (${selectedScenario.role}) in (${selectedScenario.context}). You are the employee, discussing (${selectedScenario.issue}).
-
-**FIRST, BEFORE ANY CONVERSATION STARTS:** Provide concise background data relevant to the discussion, such as: "${selectedScenario.background}". Present it neutrally as a list or summary of logs/records (e.g., "Here’s the relevant data from timecard records: ..."). Do NOT incorporate this into dialogue or assume the supervisor's lines—output it standalone.
-
-**THEN, WAIT FOR THE SUPERVISOR TO LEAD THE CONVERSATION.** Once the user (supervisor) responds, begin the role-play as the employee. Keep your responses short (2-4 sentences max per turn) and conversational—ask clarifying questions, share perspectives, and build toward understanding. Allow the supervisor to lead, but introduce realistic challenges like defensiveness or external factors (e.g., staffing shortages).
-
-The simulation ends when you (the employee) agree to a specific action plan (including follow-up steps) or sign a document. Note the completion clearly, e.g., "I agree to this plan. Employee Signature: [Name], Date: [Current Date]."
-
-Goals: Help the supervisor practice problem-solving, active listening, evidence analysis, ethical discussions, and collaborative decision-making in a social services context. Ensure the conversation covers: purpose/evidence, perspectives, impacts (on growth/team/clients), overcoming
+        if (!selectedScenario) return '';
+        return `Please role play with me to simulate a realistic employee–supervisor meeting.\n\n` +
+               `I will be the supervisor in **${selectedScenario.role}** at **${selectedScenario.context}**.\n` +
+               `You will be the employee, and we will be discussing **${selectedScenario.issue}**.\n\n` +
+               `I will lead the conversation, but please first provide background information on the issue that would be relevant to supervisor–employee discussions (for example: “${selectedScenario.background}”).\n\n` +
+               `Make it as realistically conversational as possible, and note the completion of the interview at the point that the employee agrees to an action plan or signs a document.\n\n` +
+               `The goals are for me, as the supervisor, to problem-solve and lead the conversation using my current understanding of leadership in a social services context.`;
+      };
+      const copyToClipboard = () => {
+        textAreaRef.current.select();
+        document.execCommand('copy');
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      };
+      return React.createElement('div', { className: 'max-w-lg mx-auto bg-white shadow-md rounded-lg overflow-hidden' },
+        React.createElement('div', { className: 'p-6' },
+          React.createElement('h2', { className: 'text-2xl font-bold text-center mb-4' }, 'Personnel Case Wheel'),
+          React.createElement('div', { className: 'flex flex-col items-center space-y-4' },
+            React.createElement('div', { className: 'w-64 h-64 rounded-full border-8 border-gray-300 flex items-center justify-center relative overflow-hidden' },
+              isSpinning
+                ? React.createElement('div', { className: 'animate-spin' },
+                    React.createElement('svg', { xmlns: 'http://www.w3.org/2000/svg', width: '48', height: '48', viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: '2', strokeLinecap: 'round', strokeLinejoin: 'round' },
+                      React.createElement('path', { d: 'M5 12h14' }),
+                      React.createElement('path', { d: 'm12 5 7 7-7 7' })
+                    )
+                  )
+                : React.createElement('div', { className: 'text-center p-4' },
+                    selectedScenario
+                      ? React.createElement('div', null,
+                          React.createElement('strong', null, 'Role:'), ' ', selectedScenario.role, React.createElement('br'),
+                          React.createElement('strong', null, 'Issue:'), ' ', selectedScenario.issue, React.createElement('br'),
+                          React.createElement('strong', null, 'Context:'), ' ', selectedScenario.context
+                        )
+                      : 'Spin the wheel to get your scenario!'
+                  )
+            ),
+            React.createElement('button', { onClick: spinWheel, disabled: isSpinning, className: 'px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:opacity-50' },
+              isSpinning ? 'Spinning...' : 'Spin Wheel'
+            ),
+            React.createElement('textarea', { ref: textAreaRef, readOnly: true, value: getPrompt(), className: 'w-full h-48 p-2 text-sm border rounded resize-none', placeholder: 'Your prompt will appear here.' }),
+            React.createElement('button', { onClick: copyToClipboard, disabled: !selectedScenario, className: 'px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 disabled:opacity-50' }, 'Copy Prompt'),
+            copied && React.createElement('div', { className: 'mt-2 text-green-700' }, 'Prompt copied to clipboard!')
+          )
+        )
+      );
+    }
+    ReactDOM.render(React.createElement(Wheel), document.getElementById('root'));
+  </script>
+</body>
+</html>
